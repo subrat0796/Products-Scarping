@@ -2,7 +2,14 @@ const express = require("express");
 const axios = require("axios").default;
 const cherrio = require("cheerio");
 const app = express();
+const cors = require("cors")
 
+require('dotenv').config();
+
+var PORT = process.env.PORT || 5000
+
+
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -121,6 +128,6 @@ app.post("/flipkart-products", async (req, res, next) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log(`Server running on port ${5000}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
